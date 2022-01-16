@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import Auth from "../views/Auth.vue";
+
 const routes = [
-    
+    {
+        path : "/auth",
+        component : Auth,
+        name : "auth"
+    }
 ];
 
 const router = createRouter({
