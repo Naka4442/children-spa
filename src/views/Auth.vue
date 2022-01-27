@@ -7,10 +7,10 @@
             </div>
             <div class="auth-form" v-else-if="step === 2">
                 <div class="auth-inputs">
-                    <input type="text" placeholder="Логин">
-                    <input type="password" placeholder="Пароль">
+                    <input type="text" v-model="login" placeholder="Логин">
+                    <input type="password" v-model="password" placeholder="Пароль">
                 </div>
-                <button>Вход</button>
+                <button @click="auth">Вход</button>
             </div>
         </div>
     </section>
@@ -19,7 +19,26 @@
 export default {
     data(){
         return {
-            step : 1
+            step : 1,
+            login : "",
+            password : ""
+        }
+    },
+    methods : {
+        auth(){
+            if(this.login !== "" && this.password !== ""){
+                let data = {
+                    login : this.login,
+                    password : this.password
+                };
+                this.$store.dispatch("auth", data).then(data => {
+                    if(data){
+                        alert("Еееее");
+                    }
+                }).catch(err => {
+                    alert("Неверный логин или пароль");
+                });
+            }
         }
     }
 }
