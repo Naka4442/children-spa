@@ -33,12 +33,21 @@ export default {
                 };
                 this.$store.dispatch("auth", data).then(data => {
                     if(data){
-                        alert("Еееее");
+                        this.$router.push("cabinet");
                     }
                 }).catch(err => {
                     alert("Неверный логин или пароль");
                 });
             }
+        }
+    },
+    beforeMount(){
+        let token = localStorage.getItem("token");
+        if(token){
+            this.$router.push("/cabinet");
+        }
+        else{
+            this.$router.push("/auth");
         }
     }
 }

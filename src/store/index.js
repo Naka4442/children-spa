@@ -36,9 +36,18 @@ const store = createStore({
         setAuth(state, token){
             state.auth = true;
             state.token = token;
+            localStorage.setItem("token", token);
         },
         setUser(state, user){
             state.user = user;
+            localStorage.setItem("user", JSON.stringify(user));
+        },
+        logout(state){
+            state.auth = false;
+            state.token = false;
+            state.user = false;
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
         }
     },
     getters : {
