@@ -41,6 +41,7 @@ const store = createStore({
         setUser(state, user){
             state.user = user;
             localStorage.setItem("user", JSON.stringify(user));
+            console.log(state.user);
         },
         logout(state){
             state.auth = false;
@@ -48,6 +49,10 @@ const store = createStore({
             state.user = false;
             localStorage.removeItem("token");
             localStorage.removeItem("user");
+        },
+        getUserFromStorage(state){
+            state.user = JSON.parse(localStorage.getItem("user"));
+            state.token = localStorage.getItem("token");
         }
     },
     getters : {

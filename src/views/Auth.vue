@@ -53,6 +53,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $green : #44CA41;
     .auth{
         width: 100%;
         height: 100vh;
@@ -112,7 +113,7 @@ export default {
                 button{
                     width: 400px;
                     height: 80px;
-                    background-color: #44CA41;
+                    background-color: $green;
                     color: white;
                     border: none;
                     outline: none;
